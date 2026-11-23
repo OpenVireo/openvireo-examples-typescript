@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: "0 6 * * 1"   # weekly, to catch a new SDK release that breaks an example
+
+permissions:
+  contents: read
+  packages: read   # @openvireo/sdk is on GitHub Packages
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+        env:
+          GITHUB_TOKEN: ${{ secrets.PACKAGES_TOKEN || secrets.GITHUB_TOKEN }}
+      - name: Type-check the examples against the SDK
+        run: npm run check
+      - name: Reach the account server
+        run: npm run example -- check
