@@ -8,15 +8,12 @@ Examples in other languages: [Rust](https://github.com/openvireo/openvireo-examp
 
 ## Run them
 
-You need Node 22.18 or newer (it runs the `.ts` files directly). The SDK is on GitHub Packages, which
-asks for a token even for public packages: make a GitHub personal access token (classic) with the
-`read:packages` scope and export it as `GITHUB_TOKEN` before installing. The repo's `.npmrc` points
-`@openvireo` at GitHub Packages.
+You need Node 22.18 or newer (it runs the `.ts` files directly). `npm install` takes `@openvireo/sdk`
+from npm.
 
 ```sh
 git clone https://github.com/openvireo/openvireo-examples-typescript
 cd openvireo-examples-typescript
-export GITHUB_TOKEN=ghp_...
 npm install
 npm run example -- check
 ```

@@ -9,7 +9,6 @@ on:
 
 permissions:
   contents: read
-  packages: read   # @openvireo/sdk is on GitHub Packages
 
 jobs:
   check:
@@ -20,8 +19,6 @@ jobs:
         with:
           node-version: 22
       - run: npm ci
-        env:
-          GITHUB_TOKEN: ${{ secrets.PACKAGES_TOKEN || secrets.GITHUB_TOKEN }}
       - name: Type-check the examples against the SDK
         run: npm run check
       - name: Reach the account server

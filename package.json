@@ -11,7 +11,7 @@
     "example": "node examples/main.ts"
   },
   "dependencies": {
-    "@openvireo/sdk": "1.0.1"
+    "@openvireo/sdk": "1.2.0"
   },
   "devDependencies": {
     "@types/node": "^22.19.0",
